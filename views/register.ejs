@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/stylesheet.css">
+
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'HOME')"><i class='bx bx-home'></i>HOME</button>
+    <button class="tablinks" onclick="openTab(event, 'maxcalc')"><i class='bx bx-fork'></i>MAX CALCULATOR</button>
+    <button class="tablinks" onclick="openTab(event, 'exerCISE')"><i class='bx bx-dumbbell'></i>WORKOUT PLANNER</button>
+</div>  
+<h1>Register</h1>
+<% if (messages.error) { %>
+    <%= messages.error %>
+<% } %>
+<form action="/register" method="POST">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Register</button>
+</form>
+<a href="/login">Login</a>
