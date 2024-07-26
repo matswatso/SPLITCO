@@ -48,6 +48,39 @@ body {
   border-radius: 1px;
 }
 
+.button-style {
+  flex-grow: 1;
+  background-color: inherit;
+  cursor: pointer;
+  padding: 8px 10px;
+  transition: 0.5s;
+  font-size: 35px;
+  font-family: 'Bebas Neue';
+  border-radius: 1px;
+  text-decoration: none;
+  color: black;
+  border: 2px solid black; /* Add a border */
+  margin: 0 10px; /* Add some margin to create a gap between the buttons */
+  display: flex; /* Add this */
+  align-items: center; /* Add this */
+  justify-content: center; /* Add this */
+}
+
+.button-style:hover {
+  background-color: #01baef;
+}
+
+input {
+  padding-left: 10px;
+}
+
+.label-style {
+   font-size: 30px;
+   font-family: 'Bebas Neue', cursive;
+   display: inline-block;
+   width: 100px;
+}
+
 .tab button:hover {
   background-color: #01baef;
 }
