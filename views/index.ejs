@@ -6,3 +6,763 @@
   <button type="submit">Log Out</button>
 </form>
 <p>Hello there  <%= name %> we hope you are doing well  </p>
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- import css styesheet -->
+<link rel="stylesheet" type="text/css" href="style/stylesheet.css">
+
+<!-- import local icons -->
+<link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // Open the 'HOME' tab
+    openTab(undefined, 'HOME');
+  });
+</script>
+
+
+</head>
+<body>
+  
+  <div id ='sett' class="tabcontent">
+    <div id="profile-info">
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: calc(100% - 40px);">
+        <h1>Profile Information</h1> 
+        <p>We store user information to help create the most accurate workouts for our users</p>
+        <label for="height" style="font-size: 35px; font-family: 'Bebas Neue', cursive; ">Height: (FEET, INCHES)</label> 
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <input type="number" id="feet" name="feet" placeholder="Feet" style="margin-left: 10px; font-size: 30px; border: 2px solid black">
+          <input type="number" id="inches" name="inches" placeholder="Inches" style="margin-left: 10px; font-size: 30px; border: 2px solid black">
+        </div>
+        <label for="weight" style="font-size: 35px; font-family: 'Bebas Neue', cursive; ">Weight: (POUNDS) </label>
+        <input type="number" id="weight" name="weight"  placeholder="Weight" style="font-size: 30px; border: 2px solid black">
+        <label for="experience"  style="font-size: 35px; font-family: 'Bebas Neue', cursive; ">AGE: (YEARS)</label>
+        <input type="number" id="experience" name="experience" placeholder="Years" style="font-size: 30px; border: 2px solid black">
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: 
+      center; justify-content: center; height: calc(100% - 40px); font-size: 30px;"  id="output"></div>
+      <br>
+      <br>
+      <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+        <br>
+        
+        <button style="font-size: 25px;  padding: 20px 30px;" onclick="storeProfileInfo()">Save Profile Info</button>
+      </div>
+    </div>
+    
+  </div>
+
+
+    <div id="HOME" class="tabcontent" style="display: none;">
+      
+      <h1 style="text-align:Center; font-size: 70px;margin-bottom:0px;" >WATTS FITNESS</h1>
+      <div style="display: flex; justify-content: center;">
+        <img src="https://i.imgur.com/KWXaUOA_d.webp?maxwidth=760&fidelity=grand" alt="temp" style="width: 1800px; height: 800px;">
+      </div>
+
+    </div>
+
+ 
+
+  <div id="maxcalc" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px;" >One Rep Max Calculator</h1>
+    <p> Our one rep max calculator helps you find what your potential can be based on your current numbers</p>
+    <br>
+    <div style="display: flex; justify-content: space-around; align-items: center; height: calc(100% - 40px);">
+      <button class="exerciseButton" style="background-image: url('https://i.imgur.com/50bq58rl.jpg'); background-size: cover;" onclick="openTab(event, 's')" >Squat</button>
+      <button class="exerciseButton" style="background-image: url('https://i.imgur.com/rialE5W.jpeg'); background-size: cover;" onclick="openTab(event, 'b')" >Bench</button>
+      <button class="exerciseButton" style="background-image: url('https://i.imgur.com/dmZLEQj.jpeg'); background-size: cover;" onclick="openTab(event, 'd')">Deadlift</button>
+
+    </div> 
+
+  </div>  
+
+    <div id="s" class="tabcontent">
+      <h1 style="text-align: center; font-size: 55px;" >Squat Rep Calculator</h1>
+      <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div> <!-- squat weight-->
+          <label for="weightsquat" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Weight: (LBS)</label>
+          <input type="number" id="weightsquat" name="weightsquat" placeholder="POUNDS" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black"><br>
+        </div>
+        <div> <!-- squat reps -->
+          <label for="repssquat" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Repitions: </label>
+          <input type="number" id="repssquat" name="repssquat" placeholder="REPS" style="margin-left: 10px; margin-bottom: 30px; font-size: 20px; border: 2px solid black"><br>
+        </div>
+    
+        <button class= "tablinks exercise-btn" style="font-size: 25px;  padding: 20px 30px;" onclick="storeSquatInfo()">Calculate Maxes</button>
+      </div>    
+      <div id="squatTable" style="display: none; justify-content: center; align-items: center; flex-direction: column; width: 50%; margin-left: auto; margin-right: auto;">
+        <table style="font-family: 'Bebas Neue'; font-size: 20px; border: 0px solid black; background-color: white; color: black; margin-bottom: 30px; width: 100%;">
+          <thead style="background-color: #01baef;">
+            <tr>
+              <h1 style="text-align: center; font-size: 30px;" >Squat</h1>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>One Rep Max</td>
+              <td id="onerepsquat"></td>
+            </tr>
+            <tr>
+              <td>Three Rep Max</td>
+              <td id="threerepsquat"></td>
+            </tr>
+            <tr>
+              <td>Five Rep Max</td>
+              <td id="fiverepsquat"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+          <strong>Note:</strong> These calculations are estimations and can be inaccurate.
+        </div>
+      </div>
+    </div>
+    
+
+    <div id="b" class="tabcontent">
+      <h1 style="text-align: center; font-size: 55px;" >Bench Rep Calculator</h1>
+      <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div> <!-- bench weight-->
+          <label for="weightbench" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Weight: (LBS)</label>
+          <input type="number" id="weightbench" name="weightbench" placeholder="POUNDS" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black"><br>
+        </div>
+        <div> <!-- bench reps -->
+          <label for="repsbench" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Repitions: </label>
+          <input type="number" id="repsbench" name="repsbench" placeholder="REPS" style="margin-left: 10px; margin-bottom: 30px; font-size: 20px; border: 2px solid black"><br>
+        </div>
+
+        <button class= "tablinks exercise-btn" style="font-size: 25px;  padding: 20px 30px;" onclick="storeBenchInfo()">Calculate Maxes</button>
+      </div>    
+      <div id="benchTable" style="display: none; justify-content: center; align-items: center; flex-direction: column; width: 50%; margin-left: auto; margin-right: auto;">
+        <table style="font-family: 'Bebas Neue'; font-size: 25px; border: 0px solid black; background-color: white; color: black; margin-bottom: 30px; width: 100%;">
+          <thead style="background-color: #01baef;">
+            <tr>
+              <h1 style="text-align: center; font-size: 30px;" >Bench Press</h1>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>One Rep Max</td>
+              <td id="onerepbench"></td>
+            </tr>
+            <tr>
+              <td>Three Rep Max</td>
+              <td id="threerepbench"></td>
+            </tr>
+            <tr>
+              <td>Five Rep Max</td>
+              <td id="fiverepbench"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <strong>Note:</strong> These calculations are estimations and can be inaccurate.
+        </div>
+      </div>
+      
+      
+      
+    </div>
+
+
+    <div id="d" class="tabcontent">
+      <h1 style="text-align: center; font-size: 55px;" >Deadlift Rep Calculator</h1>
+      <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div> <!-- deadlift weight-->
+          <label for="weightdeadlift" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Weight: (LBS)</label>
+          <input type="number" id="weightdeadlift" name="weightdeadlift" placeholder="POUNDS" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black"><br>
+        </div>
+        <div> <!-- deadlift reps -->
+          <label for="repsdeadlift" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Repitions: </label>
+          <input type="number" id="repsdeadlift" name="repsdeadlift" placeholder="REPS" style="margin-left: 10px; margin-bottom: 30px; font-size: 20px; border: 2px solid black"><br>
+        </div>
+    
+        <button class= "tablinks exercise-btn" style="font-size: 25px;  padding: 20px 30px;" onclick="storeDeadliftInfo()">Calculate Maxes</button>
+      </div>    
+      <div id="deadliftTable" style="display: none; justify-content: center; align-items: center; flex-direction: column; width: 50%; margin-left: auto; margin-right: auto;">
+        <table style="font-family: 'Bebas Neue'; font-size: 20px; border: 0px solid black; background-color: white; color: black; margin-bottom: 30px; width: 100%;">
+          <thead style="background-color: #01baef;">
+            <tr>
+              <h1 style="text-align: center; font-size: 30px;" >Deadlift</h1>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>One Rep Max</td>
+              <td id="onerepdeadlift"></td>
+            </tr>
+            <tr>
+              <td>Three Rep Max</td>
+              <td id="threerepdeadlift"></td>
+            </tr>
+            <tr>
+              <td>Five Rep Max</td>
+              <td id="fiverepdeadlift"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+          <strong>Note:</strong> These calculations are estimations and can be inaccurate.
+        </div>
+      </div>
+    </div>
+  
+
+
+
+  <div id="exerCISE" class="tabcontent">
+    <button id = "setting" onclick="openTab(event, 'sett')">Profile</button>
+    <h1 style="text-align: center; font-size: 55px;" >Workout Splits</h1>
+    <p> Choose the workout split that works best for you</p>
+     <div style="display: flex; justify-content: space-around; align-items: center; height: calc(100% - 40px);">
+      <button class="exerciseButton2" style="background-image: url('https://i.imgur.com/BX0Uwyg.png'); background-size: cover;" onclick="openTab(event, 'PushPullLegs')" >ppl</button>
+      <button class="exerciseButton2" style="background-image: url('https://i.imgur.com/NEOhsEu.png'); background-size: cover;" onclick="openTab(event, 'ArnoldSplit')" >arnokdld</button>
+      <button class="exerciseButton2" style="background-image: url('https://i.imgur.com/WP7Hsw6.png'); background-size: cover;" onclick="openTab(event, 'BroSplit')">brosplit</button>
+      
+    </div> 
+    <div style="display: flex; justify-content: space-around; align-items: center; height: calc(100% - 40px);">
+    <button class="exerciseButton3" style="margin-top: 12px;" onclick="openTab(event, 'Customize')">CUSTOMIZE</button>
+  </div>
+  </div>
+
+
+  
+  <div id="PushPullLegs" class="tabcontent">
+    <!--  Push Pull Legs -->
+    <h1 style="text-align: center; font-size: 70px;" >Push Pull Legs</h1>
+     <!--  put todays date -->
+    
+    <h2 style="text-align: center; font-size: 40px;" >SUMMARY</h2>
+    <p style="margin: 90px;"> Push Pull Legs describes a three day split where we group body exercises into three main categories, 
+      activieties that involve pushing with your upper body, activities that involve pulling 
+       with your upper body and activities that involve mainly legs. To fully utilize this split 
+      We recommend cycling them in order and in between allow for one to two rest days, then repeat.</p>
+
+      <div class="button-container">
+        <button class="tablinks exercise-btn" onclick="openTab(event, 'push')">PUSH DAY</button>
+        <button class="tablinks exercise-btn" onclick="openTab(event, 'pull')">PULL DAY</button>
+        <button class="tablinks exercise-btn" onclick="openTab(event, 'legs')">LEG DAY</button>
+      </div>
+      
+
+  </div>
+  <div id="push" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px;" >Push Day</h1>
+    <table style="font-size: 35px;">
+      <tr>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Rep Range</th>
+        <th>Weight</th>
+        <th>Done</th>
+      </tr>
+      <tr>
+        <th>Bench Press</th>
+        <td>3</td>
+        <td> 6 -8 </td>
+        <td id="push-bench-weight"></td>
+        
+      </tr>
+      <tr>
+        <th>Overhead Shoulder Press</th>
+        <td>2</td>
+        <td> 8 - 10</td>
+        <td id="push-overhead-weight"></td>
+        
+      </tr>
+      <tr>
+        <th>Dips</th>
+        <td>2</td>
+        <td> 10 - 12</td>
+        <td> N/A </td>
+        
+      </tr>
+      <tr>
+        <th>Chest Fly</th>
+        <td>3</td>
+        <td> 10 - 12</td>
+        <td id="push-chest-fly"></td>
+        
+      </tr>
+      <tr>
+        <th>Tricep Pushdown </th>
+        <td>2</td>
+        <td> 10 - 12</td>
+        <td id="push-tricep-pushdown"> </td>
+        
+      </tr>
+    </table>
+    
+  </div>
+
+  <div id="pull" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px;" >Pull Day</h1>
+    <table style="font-size: 35px;">
+      <tr>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Rep Range</th>
+        <th>Weight</th>
+        <th>Done</th>
+      </tr>
+      <tr>
+        <th>Bent Over Row</th>
+        <td>3</td>
+        <td> 8 - 10 </td>
+        <td id="pull-bent-row"></td>
+        
+      </tr>
+      <tr>
+        <th>Back Pull Downs</th>
+        <td>3</td>
+        <td> 8 - 10</td>
+        <td id="pull-pull-down"></td>
+        
+      </tr>
+      <tr>
+        <th>Mid Seated Row</th>
+        <td>3</td>
+        <td> 10 - 12</td>
+        <td id="pull-mid-row"></td>
+        
+      </tr>
+      <tr>
+        <th>Front Delt Raise</th>
+        <td>2</td>
+        <td> 8 - 10 </td>
+        <td id="pull-front-delt"></td>
+        
+      </tr>
+      <tr>
+        <th>Side Delt Raise</th>
+        <td>2</td>
+        <td> 8 - 10 </td>
+        <td id="pull-side-delt"></td>
+        
+      </tr>
+    </table>
+  </div>
+  <div id="legs" class="tabcontent">
+
+    <h1 style="text-align: center; font-size: 70px;" >Leg Day</h1>
+    <table style="font-size: 35px;">
+      <tr>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Rep Range</th>
+        <th>Weight</th>
+        <th>Done</th>
+      </tr>
+      <tr>
+        <th>Squat</th>
+        <td>3</td>
+        <td> 6 - 8 </td>
+        <td id="leg-squat"> </td>
+        
+      </tr>
+      <tr>
+        <th>RDL</th>
+        <td>3</td>
+        <td> 10 - 12</td>
+        <td id="leg-rdl"> </td>
+        
+      </tr>
+      <tr>
+        <th>Leg Extension</th>
+        <td>3</td>
+        <td> 10 - 15</td>
+        <td id="leg-ext"> </td>
+        
+      </tr>
+      <tr>
+        <th>Calf Raises</th>
+        <td>3</td>
+        <td> 10 - 15</td>
+        <td id="leg-raise"> </td>
+        
+      </tr>
+    </table>
+  </div>
+
+
+  <div id="ArnoldSplit" class="tabcontent">
+    <!--  Arnold Split -->
+    <h1 style="text-align: center; font-size: 70px;" >Arnold Split</h1>
+    <h2 style="text-align: center; font-size: 40px;" >SUMMARY</h2>
+    <p style="margin: 90px"> The Arnold Split describes a three day split where we group body exercises into four main categories, 
+      activites that involve your arms, back, leg, and chest To fully utilize this split we recommend  
+      cycling them in order and in between allow for one to two rest days as needed, then repeat.</p>
+      <br><br>
+      <div class="button-container">
+        <button class="tablinks exercise-btn" onclick="openTab(event, 'arm')">ARM DAY</button>
+        <button class="tablinks exercise-btn" onclick="openTab(event, 'backs')">BACK DAY</button>
+        <button class="tablinks exercise-btn" onclick="openTab(event, 'legs')">LEG DAY</button>
+        <button class="tablinks exercise-btn" onclick="openTab(event, 'chest')">CHEST DAY</button>
+      </div>
+   
+    <br><br><br>
+  </div>
+  <div id="arm" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px;" >Arm Day</h1>
+    <table style="font-size: 35px;">
+      <tr>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Rep Range</th>
+        <th>Weight</th>
+        <th>Done</th>
+      </tr>
+      <tr>
+        <th>Single Arm Bicep Curl</th>
+        <td>4</td>
+        <td> 10 - 12 </td>
+        <td id="bicep-curl"></td>
+        
+      </tr>
+      <tr>
+        <th> Bicep Crossover Curl</th>
+        <td>2</td>
+        <td> 10 - 12 </td>
+        <td id="cross-curl"></td>
+      </tr>
+      <tr>
+        <th>Cable Curl</th>
+        <td>2</td>
+        <td> 6 - 10</td>
+        <td id="cable-curl"></td>
+        
+      </tr>
+      <tr>
+        <th>Tricep Pushdown</th>
+        <td>3</td>
+        <td> 12 - 15 </td>
+        <td id="tricep-pushdown"></td>
+        
+      </tr>
+      <tr>
+        <th>SkullCrushers</th>
+        <td>4</td>
+        <td> 6 -8 </td>
+        <td id="skullcrusher"></td>
+        
+      </tr>
+      <tr>
+        <th>Side Delt Raise</th>
+        <td>2</td>
+        <td> 6 -8 </td>
+        <td id="side-delt"></td>
+        
+      </tr>
+      <tr>
+        <th>Front Delt Raise</th>
+        <td>2</td>
+        <td> 6 -8 </td>
+        <td id="front-delt"></td>
+        
+      </tr>
+    </table>
+    
+  </div>
+  <div id="backs" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px;" >Back Day</h1>
+    <table style="font-size: 35px;">
+      <tr>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Rep Range</th>
+        <th>Weight</th>
+        <th>Done</th>
+      </tr>
+      <tr>
+        <th>Bent Over Rows</th>
+        <td>4</td>
+        <td> 10 - 12 </td>
+        <td id="bent-row"></td>
+        
+      </tr>
+      <tr>
+        <th>Mid Cable Rows</th>
+        <td>3</td>
+        <td> 6 - 8 </td>
+        <td id="mid-row"></td>
+        
+      </tr>
+      <tr>
+        <th>Cable Pulldown</th>
+        <td>3</td>
+        <td> 8- 10 </td>
+        <td id="cable-pulldown"></td>
+        
+      </tr>
+      <tr>
+        <th>Rear Delt Flys</th>
+        <td>2</td>
+        <td> 6 - 10 </td>
+        <td id="rear-delt"></td>
+        
+      </tr>
+      <tr>
+        <th>Shoulder Shurgs</th>
+        <td>3</td>
+        <td> 15 - 20 </td>
+        <td id="shoulder-shrug"></td>
+        
+      </tr>
+    </table>
+    
+  </div>
+
+  <div id="chest" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px;" >Chest Day</h1>
+    <table style="font-size: 35px;">
+      <tr>
+        <th>Exercise</th>
+        <th>Sets</th>
+        <th>Rep Range</th>
+        <th>Weight</th>
+        <th>Done</th>
+        
+      </tr>
+      <tr>
+        <th>Bench Press</th>
+        <td>4</td>
+        <td> 10 - 12 </td>
+        <td id="chest-bench-press"></td>
+        
+      </tr>
+      <tr>
+        <th>Chest Cable Flys</th>
+        <td>3</td>
+        <td> 6 - 8 </td>
+        <td id="chest-cable-flys"></td>
+        
+      </tr>
+      <tr>
+        <th>Incline Bench Press</th>
+        <td>2</td>
+        <td> 6 - 8 </td>
+        <td id="chest-incline-press"></td>
+        
+      </tr>
+      <tr>
+        <th>Decline Bench Press</th>
+        <td>2</td>
+        <td> 6 - 8 </td>
+        <td id="chest-decline-press"></td>
+        
+      </tr>
+    </table>
+    
+  </div>
+
+
+  <div id="Customize" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px;">Customize Your Workout</h1>
+    <p>For more experienced lifters, or those who just want to experiment.</p>
+    <p>Enter your own exercises below:</p>
+    <div id="customWorkoutContainer" style="display: flex; justify-content: space-between;">
+      <div id="inputFields">
+        <label for="customExercise" style ="font-size: 20px;">Exercise:</label><br>
+        <input type="text" id="customExercise" name="customExercise"><br>
+        <label for="customSets" style ="font-size: 20px;">Sets:</label><br>
+        <input type="number" id="customSets" name="customSets"><br>
+        <label for="customReps" style ="font-size: 20px;">Reps:</label><br>
+        <input type="number" id="customReps" name="customReps"><br>
+        <label for="customWeight" style ="font-size: 20px;">Weight:</label><br>
+        <input type="number" id="customWeight" name="customWeight"><br>
+        <button onclick="addExercise()" style ="font-size: 20px;">Add Exercise</button>
+      </div>
+  
+      <table id="customWorkoutTable">
+        <tr>
+          <th>Exercise</th>
+          <th>Sets</th>
+          <th>Reps</th>
+          <th>Weight</th>
+          <th>Remove</th>
+          <th>Done</th>
+        </tr>
+      </table>
+    </div>
+    <!-- Preloaded workouts -->
+
+    <div class="button-container">
+      <button class="search-btn" onclick="openTab(event, 'workoutDB')";style="right:0; font-size: 40px; margin-right: 40px; ">search</button>
+    </div>
+    
+  </div>
+
+  <div id="workoutDB" class="tabcontent">
+    <h1 style="text-align: center; font-size: 70px; margin-bottom: 15px;">Workout Database</h1>
+    <div class="button-container">
+      <button class="back-btn" onclick="openTab(event, 'Customize')";style="right:0; font-size: 40px; margin-right: 40px; ">Back</button>
+    </div>
+    <div id="workouts">
+      <div id="search">
+          <input type="text" id="searchbox" onkeyup="search()" placeholder="Search">
+      </div>
+    </div>
+
+    <table id="presetWorkoutTable">
+      <tr class = "presetWorkoutTableHeader">
+          <th style=width:20%>Exercise</th>
+          <th style=width:10%>Sets</th>
+          <th style=width:15%>Reps</th>
+          <th>Add</th>
+      </tr>
+      <tr>
+          <th>Bench Press</th>
+          <td>3</td>
+          <td> 6 -8 </td>
+          <td><button onclick="addExerciseDB('Bench Press','3','6-8')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Overhead Shoulder Press</th>
+          <td>2</td>
+          <td> 8 - 10</td>
+          <td><button onclick="addExerciseDB('Overhead Shoulder Press','2','8-10')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Dips</th>
+          <td>2</td>
+          <td> 10 - 12</td>
+          <td><button onclick="addExerciseDB('Dips','2','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Chest Fly</th>
+          <td>3</td>
+          <td> 10 - 12</td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Tricep Pushdown </th>
+          <td>2</td>
+          <td> 10 - 12</td>
+          <td><button onclick="addExerciseDB('Tripcep Pushdown','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Bent Over Row</th>
+          <td>3</td>
+          <td> 8 - 10 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Back Pull Downs</th>
+          <td>3</td>
+          <td> 8 - 10</td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Mid Seated Row</th>
+          <td>3</td>
+          <td> 10 - 12</td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Front Delt Raise</th>
+          <td>2</td>
+          <td> 8 - 10 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Side Delt Raise</th>
+          <td>2</td>
+          <td> 8 - 10 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Single Arm Bicep Curl</th>
+          <td>4</td>
+          <td> 10 - 12 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th> Bicep Crossover Curl</th>
+          <td>2</td>
+          <td> 10 - 12 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Cable Curl</th>
+          <td>2</td>
+          <td> 6 - 10</td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Tricep Pushdown</th>
+          <td>3</td>
+          <td> 12 - 15 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>SkullCrushers</th>
+          <td>4</td>
+          <td> 6 -8 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Mid Cable Rows</th>
+          <td>3</td>
+          <td> 6 - 8 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Cable Pulldown</th>
+          <td>3</td>
+          <td> 8- 10 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Rear Delt Flys</th>
+          <td>2</td>
+          <td> 6 - 10 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Shoulder Shurgs</th>
+          <td>3</td>
+          <td> 15 - 20 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Squat</th>
+          <td>3</td>
+          <td> 6 - 8 </td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>RDL</th>
+          <td>3</td>
+          <td> 10 - 12</td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Leg Extension</th>
+          <td>3</td>
+          <td> 10 - 15</td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+        <tr>
+          <th>Calf Raises</th>
+          <td>3</td>
+          <td> 10 - 15</td>
+          <td><button onclick="addExerciseDB('Chest Fly','3','10-12')" style ="font-size: 20px;">Add Exercise</button></td>
+        </tr>
+      </table>
+    </table>
+  </div>
+
+  
+<script src="/js/scripts.js"></script>
+
+
+</body>
+<button id = "setting" onclick="openTab(event, 'sett')">Profile</button>
+</html>
