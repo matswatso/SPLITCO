@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
  
   const express = require('express')
+  const forceHttps = require('express-force-https')
   const app = express()
   const bcrypt = require('bcrypt')
   const passport = require('passport')
@@ -44,6 +45,14 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 )
   
   const users = []
+
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    } else {
+      next()
+    }
+  })   // Check HTTPS
   
   app.set('view engine', 'ejs');
   app.set('views', path.join(__dirname, 'views'));  
