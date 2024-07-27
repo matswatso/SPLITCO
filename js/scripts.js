@@ -1,21 +1,29 @@
 
-// This is how the tabs on the bottom work
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('.tabs a').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.getElementById('active-tab-name').textContent = tab.getAttribute('data-tab-name');
+    });
+  });
+});
+
 function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    if (evt) {
-      evt.currentTarget.className += " active";
-    }
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
   }
-  
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  if (evt) {
+    evt.currentTarget.className += " active";
+  }
+}
+
+
   function storeBenchInfo() {
     var brepsElement = document.getElementById('repsbench');
     var bweightElement = document.getElementById('weightbench');

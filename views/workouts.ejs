@@ -7,14 +7,8 @@
   <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hi <%= name %></h1>
-  <form action="/logout?_method=DELETE" method="POST">
-    <button type="submit">Log Out</button>
-  </form>
-  <p>Hello there <%= name %> we hope you are doing well</p>
-
   <%- include('partials/tabs', {active: 'workouts'}) %>
 
-  <!-- Rest of your page content goes here -->
+  <!-- Your page content goes here -->
 </body>
 </html>

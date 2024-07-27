@@ -24,6 +24,50 @@ body {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  font-size: 59px;
+  width: 100%;
+}
+
+.tabs a {
+  flex-grow: 1;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  border-right: 1px solid #000;
+  border-left: 1px solid #000;
+  font-family: 'Bebas Neue', sans-serif;
+  background-color: #01baef;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.tabs a:first-child {
+  border-left: none;
+}
+
+.tabs a:last-child {
+  border-right: none;
+}
+
+.tabs a:hover {
+  background-color: gray;
+}
+
+.tabs a.active {
+  border-color: #000;
+  background-color: #01baef;
+}
+
+
+
+
 .tab {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -32,6 +76,8 @@ body {
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: 100px;
+  font-family: 'Bebas Neue';
 }
 
 .tab button {
@@ -73,6 +119,23 @@ body {
 input {
   padding-left: 10px;
 }
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.input-group label {
+  width: 50%;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.input-group input {
+  width: 50%;
+}
+
 
 .label-style {
    font-size: 30px;

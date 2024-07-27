@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+  <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
+  <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<script src="/js/scripts.js"></script>
+<body>
+
+  <div id="maxcalc" class="tabcontent">
+    <h1 style="text-align: center; font-size: 50px;" >One Rep Max Calculator</h1>
+    <p>Find your potential</p>
+    <br>
+    <div style="display: flex; justify-content: space-around; align-items: center; height: calc(100% - 40px);">
+      <button class="exerciseButton" style="background-image: url('https://i.imgur.com/50bq58rl.jpg'); background-size: cover;" onclick="openTab(event, 's')" >Squat</button>
+      <button class="exerciseButton" style="background-image: url('https://i.imgur.com/rialE5W.jpeg'); background-size: cover;" onclick="openTab(event, 'b')" >Bench</button>
+      <button class="exerciseButton" style="background-image: url('https://i.imgur.com/dmZLEQj.jpeg'); background-size: cover;" onclick="openTab(event, 'd')">Deadlift</button>
+
+    </div> 
+
+  </div>  
+
+
+
+  <div id="s" class="tabcontent">
+    <h1 style="text-align: center; font-size: 55px;" >Squat Rep Calculator</h1>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <div class="input-group"> <!-- squat weight-->
+        <label for="weightsquat" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Weight: (LBS)</label>
+        <input type="number" id="weightsquat" name="weightsquat" placeholder="POUNDS" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black"><br>
+      </div>
+      <div class="input-group"> <!-- squat reps -->
+        <label for="repssquat" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Repitions: </label>
+        <input type="number" id="repssquat" name="repssquat" placeholder="REPS" style="margin-left: 10px; margin-bottom: 30px; font-size: 20px; border: 2px solid black"><br>
+      </div>
+  
+      <button class= "tablinks exercise-btn" style="font-size: 25px;  padding: 20px 30px;" onclick="storeSquatInfo()">Calculate Maxes</button>
+    </div>    
+    <div id="squatTable" style="display: none; justify-content: center; align-items: center; flex-direction: column; width: 50%; margin-left: auto; margin-right: auto;">
+      <table style="font-family: 'Bebas Neue'; font-size: 20px; border: 0px solid black; background-color: white; color: black; margin-bottom: 30px; width: 100%;">
+        <thead style="background-color: #01baef;">
+          <tr>
+            <h1 style="text-align: center; font-size: 30px;" >Squat</h1>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One Rep Max</td>
+            <td id="onerepsquat"></td>
+          </tr>
+          <tr>
+            <td>Three Rep Max</td>
+            <td id="threerepsquat"></td>
+          </tr>
+          <tr>
+            <td>Five Rep Max</td>
+            <td id="fiverepsquat"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+        <strong>Note:</strong> These calculations are estimations and can be inaccurate.
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="b" class="tabcontent">
+    <h1 style="text-align: center; font-size: 55px;" >Bench Rep Calculator</h1>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <div class="input-group"> <!-- bench weight-->
+        <label for="weightbench" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Weight: (LBS)</label>
+        <input type="number" id="weightbench" name="weightbench" placeholder="POUNDS" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black"><br>
+      </div>
+      <div class="input-group"> <!-- bench reps -->
+        <label for="repsbench" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Repitions: </label>
+        <input type="number" id="repsbench" name="repsbench" placeholder="REPS" style="margin-left: 10px; margin-bottom: 30px; font-size: 20px; border: 2px solid black"><br>
+      </div>
+
+      <button class= "tablinks exercise-btn" style="font-size: 25px;  padding: 20px 30px;" onclick="storeBenchInfo()">Calculate Maxes</button>
+    </div>    
+    <div id="benchTable" style="display: none; justify-content: center; align-items: center; flex-direction: column; width: 50%; margin-left: auto; margin-right: auto;">
+      <table style="font-family: 'Bebas Neue'; font-size: 25px; border: 0px solid black; background-color: white; color: black; margin-bottom: 30px; width: 100%;">
+        <thead style="background-color: #01baef;">
+          <tr>
+            <h1 style="text-align: center; font-size: 30px;" >Bench Press</h1>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One Rep Max</td>
+            <td id="onerepbench"></td>
+          </tr>
+          <tr>
+            <td>Three Rep Max</td>
+            <td id="threerepbench"></td>
+          </tr>
+          <tr>
+            <td>Five Rep Max</td>
+            <td id="fiverepbench"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Note:</strong> These calculations are estimations and can be inaccurate.
+      </div>
+    </div>
+    
+    
+    
+  </div>
+
+
+  <div id="d" class="tabcontent">
+    <h1 style="text-align: center; font-size: 55px;" >Deadlift Rep Calculator</h1>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <div class="input-group"> <!-- deadlift weight-->
+        <label for="weightdeadlift" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Weight: (LBS)</label>
+        <input type="number" id="weightdeadlift" name="weightdeadlift" placeholder="POUNDS" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black"><br>
+      </div>
+      <div class="input-group"> <!-- deadlift reps -->
+        <label for="repsdeadlift" style="font-size: 30px; font-family: 'Bebas Neue', cursive;">Repitions: </label>
+        <input type="number" id="repsdeadlift" name="repsdeadlift" placeholder="REPS" style="margin-left: 10px; margin-bottom: 30px; font-size: 20px; border: 2px solid black"><br>
+      </div>
+  
+      <button class= "tablinks exercise-btn" style="font-size: 25px;  padding: 20px 30px;" onclick="storeDeadliftInfo()">Calculate Maxes</button>
+    </div>    
+    <div id="deadliftTable" style="display: none; justify-content: center; align-items: center; flex-direction: column; width: 50%; margin-left: auto; margin-right: auto;">
+      <table style="font-family: 'Bebas Neue'; font-size: 20px; border: 0px solid black; background-color: white; color: black; margin-bottom: 30px; width: 100%;">
+        <thead style="background-color: #01baef;">
+          <tr>
+            <h1 style="text-align: center; font-size: 30px;" >Deadlift</h1>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One Rep Max</td>
+            <td id="onerepdeadlift"></td>
+          </tr>
+          <tr>
+            <td>Three Rep Max</td>
+            <td id="threerepdeadlift"></td>
+          </tr>
+          <tr>
+            <td>Five Rep Max</td>
+            <td id="fiverepdeadlift"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+        <strong>Note:</strong> These calculations are estimations and can be inaccurate.
+      </div>
+    </div>
+  </div>
+  <%- include('partials/tabs', {active: 'home'}) %>
+
+</body>
+
+  <script>
+    openTab(null, 'maxcalc');
+  </script>
+</html>

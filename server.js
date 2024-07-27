@@ -61,11 +61,29 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 
   app.get('/', checkAuthenticated, (req, res) => {
-    res.render('index.ejs', { name: req.user.name })
+    res.render('index.ejs', { name: req.user.name, active: 'index' })
   })
   
+  app.get('/index', checkAuthenticated, (req, res) => {
+    res.render('index.ejs', { name: req.user.name, active: 'index' })
+  })
+  
+  
+  app.get('/max-calc', checkAuthenticated, (req, res) => {
+    res.render('max-calc.ejs', { name: req.user.name, active: 'max-calc' })
+  })
+  
+  app.get('/workouts', checkAuthenticated, (req, res) => {
+    res.render('workouts.ejs', { name: req.user.name, active: 'workouts' })
+  })
+  
+  app.get('/public-workouts', checkAuthenticated, (req, res) => {
+    res.render('public-workouts.ejs', { name: req.user.name, active: 'public-workouts' })
+  })
+  
+  
   app.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('login.ejs')
+    res.render('login.ejs', { active: 'login' })
   })
   
   app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -76,7 +94,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 
   app.get('/register', (req, res) => {
-    res.render('register', { messages: req.flash() });
+    res.render('register', { messages: req.flash(), active: 'register' });
   });
 
   app.post('/register', async (req, res) => {
