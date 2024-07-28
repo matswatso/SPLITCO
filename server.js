@@ -86,10 +86,29 @@ const supabase = createClient(supabaseUrl, supabaseKey)
     res.render('workouts.ejs', { name: req.user.name, active: 'workouts' })
   })
   
-  app.get('/public-workouts', checkAuthenticated, (req, res) => {
-    res.render('public-workouts.ejs', { name: req.user.name, active: 'public-workouts' })
+  
+  
+
+
+  app.get('/public-workouts', checkAuthenticated, async (req, res) => {
+    const { data: posts, error } = await supabase
+      .from('posts')
+      .select('*, users(name)')
+      .order('created_at', { ascending: false });
+  
+    if (error) {
+      console.error(error);
+      return res.status(500).send('An error occurred while fetching the posts');
+    }
+  
+    res.render('public-workouts.ejs', { name: req.user.name, active: 'public-workouts', posts: posts })
   })
   
+  
+  
+
+  
+
   app.post('/public-workouts', checkAuthenticated, async (req, res) => {
     const { content } = req.body;
     await supabase
