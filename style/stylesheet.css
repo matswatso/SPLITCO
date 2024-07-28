@@ -116,6 +116,43 @@ body {
   background-color: #01baef;
 }
 
+.logout-button {
+  position: absolute;
+  top: 80px;
+  right: 50px;
+  border-radius: 25px;
+}
+
+.logout-button button {
+  font-family: 'Bebas Neue', sans-serif ;
+  font-size: 55px;
+  border-radius: 25px ;
+}
+
+.logout-button button:hover {
+  background-color: #01baef;
+}
+
+
+.logout-button2 {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  border-radius: 25px;
+}
+
+.logout-button2 button {
+  font-family: 'Bebas Neue', sans-serif ;
+  font-size: 55px;
+  border-radius: 25px ;
+}
+
+.logout-button2 button:hover {
+  background-color: #01baef;
+}
+
+
+
 input {
   padding-left: 10px;
 }

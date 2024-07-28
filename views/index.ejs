@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: flex-start; /* Change this */
     margin: 100;
+    font-size: 90px;
     padding: 0; /* Add this */
   }
 
@@ -19,7 +20,7 @@
 <html>
 <head>
   <!-- import css styesheet -->
-  <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
+  <link rel="stylesheet" href="/style/stylesheet.css">
   <!-- import local icons -->
   <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -31,7 +32,7 @@
   <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;"> <!-- Adjust this -->
     
     <h1>Hi <%= name %></h1>
-    <form action="/logout?_method=DELETE" method="POST">
+    <form action="/logout?_method=DELETE" method="POST" class="logout-button">
       <button type="submit">Log Out</button>
     </form>
     <p>Hello there <%= name %> we hope you are doing well</p>

@@ -6,6 +6,10 @@
   <!-- import local icons -->
   <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<form action="/logout?_method=DELETE" method="POST" class="logout-button2">
+  <button type="submit">Log Out</button>
+</form>
+
 <body>
   <%- include('partials/tabs', {active: 'workouts'}) %>
 
