@@ -90,6 +90,28 @@ const supabase = createClient(supabaseUrl, supabaseKey)
     res.render('public-workouts.ejs', { name: req.user.name, active: 'public-workouts' })
   })
   
+  app.post('/public-workouts', checkAuthenticated, async (req, res) => {
+    const { content } = req.body;
+    await supabase
+      .from('posts')
+      .insert([
+        {
+          postid: Date.now(),
+          created_at: new Date(),
+          userid: req.user.id,
+          content: content
+        },
+      ])
+      .then(data => {
+        res.redirect('/public-workouts')
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).send('An error occurred while creating the post');
+      });
+  })
+  
+  
   
   app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login.ejs', { active: 'login' })
@@ -105,6 +127,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
   app.get('/register', (req, res) => {
     res.render('register', { messages: req.flash(), active: 'register' });
   });
+  
 
   app.post('/register', async (req, res) => {
     try {

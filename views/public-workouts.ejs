@@ -9,6 +9,13 @@
 <body>
   <%- include('partials/tabs', {active: 'public-workouts'}) %>
 
+  <!-- Post creation form -->
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100vh; margin-top: 300px;">
+    <form action="/public-workouts" method="post">
+      <textarea name="content" placeholder="Write your workout here..."></textarea>
+      <button type="submit">Post</button>
+    </form>
+</div>
   <!-- Your page content goes here -->
 </body>
 </html>
