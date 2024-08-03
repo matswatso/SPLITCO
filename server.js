@@ -192,9 +192,6 @@ const supabase = createClient(supabaseUrl, supabaseKey)
     }
   });
   
-
-  
-
   
   app.delete('/logout', (req, res, next) => {
     req.logOut((err) => {
@@ -221,3 +218,83 @@ const supabase = createClient(supabaseUrl, supabaseKey)
   }
   
   app.listen(process.env.PORT || 3000)
+  
+  app.post('/create-workout', checkAuthenticated, async (req, res) => {
+    const { workoutName, workoutDescription, dayName, exerciseName, sets, reps, exerciseCount } = req.body;
+
+    try {
+        console.log('Received form data:', req.body);
+
+        // Insert workout
+        const { data: workout, error: workoutError } = await supabase
+            .from('workouts')
+            .insert([
+                {
+                    id: Date.now().toString(),
+                    user_id: req.user.id,
+                    name: workoutName,
+                    description: workoutDescription,
+                    created_at: new Date()
+                },
+            ])
+            .select()
+            .single();
+
+        if (workoutError) throw workoutError;
+
+        // Ensure dayName, exerciseName, sets, reps, and exerciseCount are arrays
+        const dayNames = Array.isArray(dayName) ? dayName : [dayName];
+        const exerciseNames = Array.isArray(exerciseName) ? exerciseName : [exerciseName];
+        const setCounts = Array.isArray(sets) ? sets : [sets];
+        const repCounts = Array.isArray(reps) ? reps : [reps];
+        const exerciseCounts = Array.isArray(exerciseCount) ? exerciseCount : [exerciseCount];
+
+        let exerciseIndex = 0;
+
+        // Insert days and exercises
+        for (let i = 0; i < dayNames.length; i++) {
+            // Insert day
+            const { data: day, error: dayError } = await supabase
+                .from('workout_days')
+                .insert([
+                    {
+                        id: Date.now().toString(),
+                        workout_id: workout.id,
+                        name: dayNames[i],
+                        order: i + 1
+                    },
+                ])
+                .select()
+                .single();
+
+            if (dayError) throw dayError;
+
+            // Insert exercises for the current day
+            for (let j = 0; j < parseInt(exerciseCounts[i], 10); j++) {
+                const { data: exercise, error: exerciseError } = await supabase
+                    .from('workout_exercises')
+                    .insert([
+                        {
+                            id: Date.now().toString(),
+                            day_id: day.id,
+                            exercise_name: exerciseNames[exerciseIndex],
+                            sets: parseInt(setCounts[exerciseIndex], 10),
+                            reps: parseInt(repCounts[exerciseIndex], 10),
+                            order: j + 1
+                        },
+                    ])
+                    .select()
+                    .single();
+
+                if (exerciseError) throw exerciseError;
+
+                exerciseIndex++;
+            }
+        }
+
+        res.redirect('/workouts');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while creating the workout');
+    }
+});
