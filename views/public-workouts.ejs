@@ -12,27 +12,68 @@
 <body>
   <%- include('partials/tabs', {active: 'public-workouts'}) %>
 
-  <!-- Post creation form -->
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 100px;">
-    <form action="/public-workouts" method="post">
-      <textarea name="content" placeholder="Write your workout here..."></textarea>
-      <button type="submit">Post</button>
-    </form>
-  </div>
-
-
-<!-- Display all posts -->
-<div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 500px; margin-top: 20px; overflow-y: scroll;">
-  <% posts.forEach(function(post) { %>
-    <div>
-      <h2><%= post.users.name %></h2> <!-- Display the user's name -->
-      <p><%= post.content %></p> <!-- Display the post content -->
-    </div>  
+<!-- Display all workouts -->
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 500px; margin-top: 20px; overflow-y: scroll; overflow-x: hidden;">
+  <% workouts.forEach(function(workout) { %>
+    <button class="workoutpublic-button" onclick="openModal('<%= workout.id %>')">
+      <h2><%= workout.name %> <span class="workout-user">by <%= workout.users.name %></span></h2>
+      <p><%= workout.description %></p> <!-- Display the workout description -->
+    </button>
   <% }); %>
 </div>
 
+<!-- Modal structure -->
+<div id="workout-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <div id="modal-body"></div>
+  </div>
+</div>
 
+<script>
+  function openModal(workoutId) {
+    // Fetch workout details and display in modal
+    fetch(`/workout-details/${workoutId}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Workout Details:', data); // Debugging line
+        const modalBody = document.getElementById('modal-body');
+        if (data.days && data.days.length > 0) {
+          modalBody.innerHTML = `
+            <h2>${data.name}</h2>
+            <p>${data.description}</p>
+            <h3>Days:</h3>
+            <ul>
+              ${data.days.map(day => `
+                <li>
+                  <h4>${day.name}</h4>
+                  <ul>
+                    ${day.exercises.map(exercise => `
+                      <li>${exercise.exercise_name} - ${exercise.sets} sets of ${exercise.reps} reps</li>
+                    `).join('')}
+                  </ul>
+                </li>
+              `).join('')}
+            </ul>
+          `;
+        } else {
+          modalBody.innerHTML = `
+            <h2>${data.name}</h2>
+            <p>${data.description}</p>
+            <p>No days or exercises found for this workout.</p>
+          `;
+        }
+        document.getElementById('workout-modal').style.display = 'block';
+      })
+      .catch(error => {
+        console.error('Error fetching workout details:', error);
+      });
+  }
 
-  <!-- Your page content goes here -->
+  function closeModal() {
+    document.getElementById('workout-modal').style.display = 'none';
+  }
+</script>
+
 </body>
 </html>

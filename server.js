@@ -88,50 +88,6 @@ const supabase = createClient(supabaseUrl, supabaseKey)
   
   
   
-
-
-  app.get('/public-workouts', checkAuthenticated, async (req, res) => {
-    const { data: posts, error } = await supabase
-      .from('posts')
-      .select('*, users(name)')
-      .order('created_at', { ascending: false });
-  
-    if (error) {
-      console.error(error);
-      return res.status(500).send('An error occurred while fetching the posts');
-    }
-  
-    res.render('public-workouts.ejs', { name: req.user.name, active: 'public-workouts', posts: posts })
-  })
-  
-  
-  
-
-  
-
-  app.post('/public-workouts', checkAuthenticated, async (req, res) => {
-    const { content } = req.body;
-    await supabase
-      .from('posts')
-      .insert([
-        {
-          postid: Date.now(),
-          created_at: new Date(),
-          userid: req.user.id,
-          content: content
-        },
-      ])
-      .then(data => {
-        res.redirect('/public-workouts')
-      })
-      .catch(error => {
-        console.error(error);
-        res.status(500).send('An error occurred while creating the post');
-      });
-  })
-  
-  
-  
   app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login.ejs', { active: 'login' })
   })
@@ -297,4 +253,68 @@ const supabase = createClient(supabaseUrl, supabaseKey)
         console.error(error);
         res.status(500).send('An error occurred while creating the workout');
     }
+});
+
+
+
+
+
+
+
+app.get('/public-workouts', checkAuthenticated, async (req, res) => {
+  const { data: workouts, error } = await supabase
+    .from('workouts')
+    .select('*, users(name)')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return res.status(500).send('An error occurred while fetching the workouts');
+  }
+
+  res.render('public-workouts.ejs', { name: req.user.name, active: 'public-workouts', workouts: workouts });
+});
+
+app.get('/workout-details/:id', checkAuthenticated, async (req, res) => {
+  const { id } = req.params;
+
+  const { data: workout, error: workoutError } = await supabase
+    .from('workouts')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (workoutError) {
+    console.error(workoutError);
+    return res.status(500).send('An error occurred while fetching the workout details');
+  }
+
+  const { data: days, error: daysError } = await supabase
+    .from('workout_days')
+    .select('*')
+    .eq('workout_id', id);
+
+  if (daysError) {
+    console.error(daysError);
+    return res.status(500).send('An error occurred while fetching the days');
+  }
+
+  const dayIds = days.map(day => day.id);
+  const { data: exercises, error: exercisesError } = await supabase
+    .from('workout_exercises')
+    .select('*')
+    .in('day_id', dayIds);
+
+  if (exercisesError) {
+    console.error(exercisesError);
+    return res.status(500).send('An error occurred while fetching the exercises');
+  }
+
+  // Combine days and exercises
+  const daysWithExercises = days.map(day => ({
+    ...day,
+    exercises: exercises.filter(exercise => exercise.day_id === day.id)
+  }));
+
+  res.json({ ...workout, days: daysWithExercises });
 });
