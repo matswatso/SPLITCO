@@ -1,0 +1,126 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .workoutpublic-button {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    padding-bottom: 20px;
+    margin: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: hidden;
+    white-space: nowrap; /* Prevent text wrapping */
+    min-height: 150px; /* Set a minimum height */
+  }
+  
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    max-height: 50vh; /* Set a maximum height for the modal content */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    border-radius: 10px;
+    padding-bottom:100px;
+  }
+
+  
+ /* SCroll BAr stuff*/
+.container::-webkit-scrollbar {
+    width: 25px; 
+  }
+  
+  .container::-webkit-scrollbar-track {
+    background: #f0f0f0; 
+    border-radius: 10px; 
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    background-color: #01baef; 
+    border-radius: 10px; 
+    border: 3px solid #f0f0f0; 
+  }
+  
+  .container::-webkit-scrollbar-button {
+    display: none; /* Hide the up and down arrows */
+  }
+  
+  /* For Firefox */
+  .container {
+    scrollbar-width: thin; 
+    scrollbar-color: #01baef #f0f0f0; 
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    border-radius: 10px; 
+  }
+  
+  .container::-webkit-scrollbar-track {
+    border-radius: 10px; 
+  }
+  /* END OF SCROLL BAR STUFF */
+
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+  
+  .centered-list {
+    list-style-type: none; 
+    padding: 0; 
+    text-align: center; 
+  }
+  
+  .centered-list li {
+    margin: 10px 0; /* Add some margin between list items */
+  }
+  
+  .centered-list ul {
+    list-style-type: none; 
+    padding: 0; 
+    text-align: center; 
+  }
+  
+  .centered-list ul li {
+    margin: 5px 0; /* Add some margin between nested list items */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* for the modal button */
+.workout-user {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1em;
+    margin-left: 10px;
+  }
+  

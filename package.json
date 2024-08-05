@@ -16,6 +16,7 @@
     "express-flash": "^0.0.2",
     "express-force-https": "^1.0.0",
     "express-session": "^1.18.0",
+    "loginstuff": "file:",
     "method-override": "^3.0.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
