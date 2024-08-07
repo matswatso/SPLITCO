@@ -562,9 +562,22 @@ body {
   background-color: #01baef;
 }
 
+/*scroll bar stuff */
+body::-webkit-scrollbar {
+  width: 25px; 
+}
 
+body::-webkit-scrollbar-track {
+  background: #f0f0f0; 
+  border-radius: 10px; 
+}
 
+body::-webkit-scrollbar-thumb {
+  background-color: #01baef; 
+  border-radius: 10px; 
+  border: 3px solid #f0f0f0; 
+}
 
-
-
-
+body::-webkit-scrollbar-button {
+  display: none; /* Hide the up and down arrows */
+}

@@ -1,51 +1,92 @@
 <link rel="stylesheet" href="/style/stylesheet.css">
+<link rel="stylesheet" href="/style/phonestyles.css">
 <style>
     body {
-    background-color: #01baef; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+        background-color: #01baef; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        margin: 0;
+        overflow: auto;
+    }
 
-.container {
-    background-color: white;
-    padding-top: 20px; 
-    padding-right: 80px;
-    padding-bottom: 80px; 
-    padding-left: 60px;
-    border-radius: 32px;
-    margin-top: 10px;
-}
+    .container {
+        background-color: white;
+        padding: 60px 20px 160px 20px;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+        width: 100%; /* Ensure the form group takes full width */
+    }
+
+    .label-style {
+        font-size: 60px;
+        text-align: center; /* Center the text */
+        width: 100%; /* Ensure the label takes full width */
+    }
+
+    /* Change the placeholder font size */
+    input::placeholder {
+        font-size: 60px;
+    }
+
+    input::-webkit-input-placeholder {
+        font-size: 60px;
+    }
+
+    input::-moz-placeholder {
+        font-size: 60px;
+    }
+
+    input:-ms-input-placeholder {
+        font-size: 60px;
+    }
+
+    input:-moz-placeholder {
+        font-size: 60px;
+    }
+
+    input {
+        font-size: 60px;
+        border: 2px solid black;
+        width: 85%;
+    }
 </style>
-
-
 
 <body>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100vh; margin-top: 10px;">
-        <h1 style ='font-size: 95px; color: white; margin-bottom: 20px;' >splitco</h1>
+        <h1 style ='font-size: 220px; color: white; margin-bottom: 20px;' >splitco</h1>
         <div class="container">
-            <h1 style ='font-size: 55px; text-align: center; margin-bottom: 15px;'>Register</h1>
+            <h1 style ='font-size: 175px; text-align: center; margin-bottom: 15px;'>Register</h1>
             <% if (messages.error) { %>
                 <%= messages.error %>
             <% } %>
             <form action="/register" method="POST" style="text-align: center;">
-                <div>
+                <div class="form-group">
                     <label for="name" class="label-style">Name</label>
-                    <input type="text" id="name" name="name" placeholder="NAME" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black" required>
+                    <input type="text" id="name" name="name" placeholder="NAME" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="email" class="label-style">Email</label>
-                    <input type="email" id="email" name="email" placeholder="EMAIL" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black" required>
+                    <input type="email" id="email" name="email" placeholder="EMAIL" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="password" class="label-style">Password</label>
-                    <input type="password" id="password" name="password" placeholder="PASSWORD" style="margin-left: 10px; margin-bottom: 15px; font-size: 20px; border: 2px solid black" required>
+                    <input type="password" id="password" name="password" placeholder="PASSWORD" required>
                 </div>
                 <div style="display: flex; justify-content: center;">
-                    <a href="/login" class="button-style">Login</a>
-                    <button type="submit" class="button-style">Register</button>
+                    <a href="/login" class="button-style-phone">Login</a>
+                    <button type="submit" class="button-style-phone">Register</button>
                 </div>
             </form>
         </div>
