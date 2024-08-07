@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/style/stylesheet.css">
+
+<style>
+    body {
+        background-color: #01baef; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background-color: white;
+        padding: 60px 20px 160px 20px;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+        width: 100%; /* Ensure the form group takes full width */
+    }
+
+    .label-style {
+        font-size: 60px;
+        text-align: center; /* Center the text */
+        width: 100%; /* Ensure the label takes full width */
+    }
+
+    /* Change the placeholder font size */
+    input::placeholder {
+        font-size: 60px;
+    }
+
+    input::-webkit-input-placeholder {
+        font-size: 60px;
+    }
+
+    input::-moz-placeholder {
+        font-size: 60px;
+    }
+
+    input:-ms-input-placeholder {
+        font-size: 60px;
+    }
+
+    input:-moz-placeholder {
+        font-size: 60px;
+    }
+</style>
+
+<body>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <h1 style="font-size: 220px; color: white; margin-bottom: 20px;">splitco</h1>
+        <div class="container">
+            <h1 style="font-size: 175px; text-align: center; margin-bottom: 15px;">Login</h1>
+            <% if (messages.error) { %>
+                <%= messages.error %>
+            <% } %>
+            <form action="/login" method="POST" style="text-align: center;">
+                <div class="form-group">
+                    <label for="email" class="label-style">Email</label><br>
+                    <input type="email" id="email" name="email" placeholder="EMAIL" style="font-size: 60px; border: 2px solid black; width: 85%;" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="label-style">Password</label><br>
+                    <input type="password" id="password" name="password" placeholder="PASSWORD" style="font-size: 60px; border: 2px solid black; width: 85%;" required><br>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <a href="/register" class="button-style-phone">Register</a>
+                    <button type="submit" class="button-style-phone">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

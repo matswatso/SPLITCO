@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <form action="/logout?_method=DELETE" method="POST" class="logout-button2">
+    <button type="submit">Log Out</button>
+  </form>
+<head>
+  <!-- import css styesheet -->
+  <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="style/modals.css">
+  <!-- import local icons -->
+  <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <%- include('partials/tabs', {active: 'public-workouts'}) %>
+
+<!-- Display all workouts -->
+ <h1 style='text-align: center;'>PUBLIC WORKOUTS</h1>
+<div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 62.5vh; margin-top: 70px; overflow-y: scroll; overflow-x: hidden;">
+  <% workouts.forEach(function(workout) { %>
+    <button class="workoutpublic-button" onclick="openModal('<%= workout.id %>')">
+      <h2><%= workout.name %> <span class="workout-user">by <%= workout.users.name %></span></h2>
+      <p><%= workout.description %></p> <!-- Display the workout description -->
+    </button>
+  <% }); %>
+</div>
+
+<!-- Modal structure -->
+<div id="workout-modal" class="modal">
+  <div class="modal-content container">
+    <span class="close" onclick="closeModal()">×</span>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+  function openModal(workoutId) {
+  // Fetch workout details and display in modal
+  fetch(`/workout-details/${workoutId}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('Workout Details:', data); // Debugging line
+      const modalBody = document.getElementById('modal-body');
+      if (data.days && data.days.length > 0) {
+        modalBody.innerHTML = `
+          <h2>${data.name}</h2>
+          <p>${data.description}</p>
+          <h3>Days:</h3>
+          <ul class="centered-list">
+            ${data.days.map(day => `
+              <li>
+                <h4>${day.name}</h4>
+                <ul>
+                  ${day.exercises.map(exercise => `
+                    <li>${exercise.exercise_name} - ${exercise.sets} sets of ${exercise.reps} reps</li>
+                  `).join('')}
+                </ul>
+              </li>
+            `).join('')}
+          </ul>
+        `;
+      } else {
+        modalBody.innerHTML = `
+          <h2>${data.name}</h2>
+          <p>${data.description}</p>
+          <p>No days or exercises found for this workout.</p>
+        `;
+      }
+      document.getElementById('workout-modal').style.display = 'block';
+      document.body.classList.add('modal-open'); // Add class to hide main page scrollbar
+    })
+    .catch(error => {
+      console.error('Error fetching workout details:', error);
+    });
+}
+
+function closeModal() {
+  document.getElementById('workout-modal').style.display = 'none';
+  document.body.classList.remove('modal-open'); // Remove class to show main page scrollbar
+}
+</script>
+
+</body>
+</html>

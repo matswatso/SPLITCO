@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workouts</title>
+    <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
+    <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        #create-workout-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 100%; /* Remove width limitation */
+            overflow-y: auto;
+            padding-bottom: 60px; /* Account for the height of the tabs */
+        }
+        .day, .exercise {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .exercise {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%; /* Allow full width */
+        }
+        .exercise label, .exercise input {
+            margin: 5px;
+        }
+        .logout-button2 {
+            position: absolute; /* Revert to original CSS */
+            top: 30px;
+            right: 50px;
+            border-radius: 25px;
+        }
+        #create-workout-form {
+            max-height: 60vh; /* Show scroll bar sooner */
+            overflow-y: auto;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+  <form action="/logout?_method=DELETE" method="POST" class="logout-button2">
+    <button type="submit">Log Out</button>
+  </form>
+    <h1>Create Workout</h1>
+    <form id="create-workout-form" action="/create-workout" method="POST">
+        <div>
+            <label for="workout-name">Workout Name:</label>
+            <input type="text" id="workout-name" name="workoutName" required>
+        </div>
+        <div>
+            <label for="workout-description">Description:</label>
+            <textarea id="workout-description" name="workoutDescription" required></textarea>
+        </div>
+        <div id="days-container">
+            <h2>Days</h2>
+            <div class="day">
+                <label for="day-name">Day Name:</label>
+                <input type="text" name="dayName" required>
+                <input type="hidden" name="exerciseCount" value="1">
+                <div class="exercises-container">
+                    <h3>Exercises</h3>
+                    <div class="exercise">
+                        <label for="exercise-name">Exercise Name:</label>
+                        <input type="text" name="exerciseName" required>
+                        <label for="sets">Sets:</label>
+                        <input type="number" name="sets" required>
+                        <label for="reps">Reps:</label>
+                        <input type="number" name="reps" required>
+                    </div>
+                </div>
+                <button type="button" class="add-exercise">Add Exercise</button>
+            </div>
+        </div>
+        <button type="button" id="add-day">Add Day</button>
+        <button type="submit">Create Workout</button>
+    </form>
+
+    <script>
+        document.getElementById('add-day').addEventListener('click', function() {
+            const dayContainer = document.createElement('div');
+            dayContainer.classList.add('day');
+            dayContainer.innerHTML = `
+                <label for="day-name">Day Name:</label>
+                <input type="text" name="dayName" required>
+                <input type="hidden" name="exerciseCount" value="1">
+                <div class="exercises-container">
+                    <h3>Exercises</h3>
+                    <div class="exercise">
+                        <label for="exercise-name">Exercise Name:</label>
+                        <input type="text" name="exerciseName" required>
+                        <label for="sets">Sets:</label>
+                        <input type="number" name="sets" required>
+                        <label for="reps">Reps:</label>
+                        <input type="number" name="reps" required>
+                    </div>
+                </div>
+                <button type="button" class="add-exercise">Add Exercise</button>
+            `;
+            document.getElementById('days-container').appendChild(dayContainer);
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('add-exercise')) {
+                const exerciseContainer = document.createElement('div');
+                exerciseContainer.classList.add('exercise');
+                exerciseContainer.innerHTML = `
+                    <label for="exercise-name">Exercise Name:</label>
+                    <input type="text" name="exerciseName" required>
+                    <label for="sets">Sets:</label>
+                    <input type="number" name="sets" required>
+                    <label for="reps">Reps:</label>
+                    <input type="number" name="reps" required>
+                `;
+                event.target.previousElementSibling.appendChild(exerciseContainer);
+
+                // Update exercise count
+                const exerciseCountInput = event.target.closest('.day').querySelector('input[name="exerciseCount"]');
+                exerciseCountInput.value = parseInt(exerciseCountInput.value) + 1;
+            }
+        });
+    </script>
+    <%- include('partials/tabs', {active: 'home'}) %>
+</body>
+</html>
