@@ -19,3 +19,31 @@
   .button-style-phone:hover {
     background-color: #01baef;
   }
+
+  /* maxcalc scroll */
+  .scrollable-content {
+    overflow-y: scroll; /* Always show vertical scrollbar */
+    max-height: calc(100vh - 15vh);
+    height: calc(100vh - 34vh); /* Adjust height to account for the tab section */
+  }
+  
+  /* Custom scrollbar styles for .scrollable-content */
+  .scrollable-content::-webkit-scrollbar {
+    width: 25px; 
+  }
+  
+  .scrollable-content::-webkit-scrollbar-track {
+    background: #f0f0f0; 
+    border-radius: 10px; 
+  }
+  
+  .scrollable-content::-webkit-scrollbar-thumb {
+    background-color: #01baef; 
+    border-radius: 10px; 
+    border: 3px solid #f0f0f0; 
+  }
+  
+  .scrollable-content::-webkit-scrollbar-button {
+    display: none; /* Hide the up and down arrows */
+  }
+  

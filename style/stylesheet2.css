@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-size: 60;
 }
 
 /* latin */
@@ -32,7 +33,7 @@ body {
   bottom: 0;
   font-size: 59px;
   width: 100%;
-  height:15vh;
+  height:14vh;
 }
 
 .tabs a {
@@ -242,13 +243,13 @@ input {
 
 p {
   font-family: 'Roboto', sans-serif;
-  font-size: 50px;
+  font-size: 21px;
   text-align: center;
 }
 
 h1 {
   font-family: 'Bebas Neue';
-  font-size: 90px;
+  font-size: 55px;
 }
 
 table {
@@ -537,13 +538,13 @@ body {
 }
 
 .exerciseButton {
-  padding: 10px 24px 50px 24px;
+  padding: 10px 30px;
   font-size: 0px;
   font-family: 'Bebas Neue';
   color: white;
   border-radius: 12px; /* Rounded corners */
-  width: 27%; /* Take up 30% of the container width */
-  height: 55vh; /* Set the height to 80% of the viewport height */
+  width: 90%; /* Take up 30% of the container width */
+  height: 850px; /* Set the height to 80% of the viewport height */
 }
 .exerciseButton2 {
   padding: 10px 24px 50px 24px;
