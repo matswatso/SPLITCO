@@ -6,7 +6,7 @@
 <head>
   <!-- import css styesheet -->
   <link rel="stylesheet" type="text/css" href="/style/stylesheet2.css">
-  <link rel="stylesheet" type="text/css" href="/style/modals.css">
+  <link rel="stylesheet" type="text/css" href="/style/modals_phone.css">
   <!-- import local icons -->
   <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -19,7 +19,7 @@
   <% workouts.forEach(function(workout) { %>
     <button class="workoutpublic-button" onclick="openModal('<%= workout.id %>')">
       <h2><%= workout.name %> <span class="workout-user">by <%= workout.users.name %></span></h2>
-      <p><%= workout.description %></p> <!-- Display the workout description -->
+      <p style="font-size: 40px;"><%= workout.description %></p> <!-- Display the workout description -->
     </button>
   <% }); %>
 </div>
@@ -43,7 +43,7 @@
       if (data.days && data.days.length > 0) {
         modalBody.innerHTML = `
           <h2>${data.name}</h2>
-          <p>${data.description}</p>
+          <p style="font-size:40px;">${data.description}</p>
           <h3>Days:</h3>
           <ul class="centered-list">
             ${data.days.map(day => `
