@@ -7,6 +7,76 @@
     <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
     <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
     <style>
+        .add-exercise {
+            flex-grow: 1;
+            background-color: inherit;
+            cursor: pointer;
+            padding: 8px 10px;
+            transition: 0.5s;
+            font-size: 35px;
+            font-family: 'Bebas Neue';
+            border-radius: 1px;
+            text-decoration: none;
+            color: black;
+            border: 2px solid black; /* Add a border */
+            margin: 0 10px; /* Add some margin to create a gap between the buttons */
+            display: flex; /* Add this */
+            align-items: center; /* Add this */
+            justify-content: center; /* Add this */
+        }
+        
+        .button-style-phone-workout:hover {
+            background-color: #01baef;
+        }
+
+
+
+        .button-style-workout {
+            flex-grow: 1;
+            background-color: inherit;
+            cursor: pointer;
+            padding: 8px 10px;
+            transition: 0.5s;
+            font-size: 35px;
+            font-family: 'Bebas Neue';
+            border-radius: 1px;
+            text-decoration: none;
+            color: black;
+            border: 2px solid black; /* Add a border */
+            margin: 0 10px; /* Add some margin to create a gap between the buttons */
+            display: flex; /* Add this */
+            align-items: center; /* Add this */
+            justify-content: center; /* Add this */
+        }
+        
+        .button-style-workout:hover {
+            background-color: #01baef;
+        }
+
+        .button-style-workout2 {
+            flex-grow: 1;
+            background-color: #01baef;
+            color: white;
+            cursor: pointer;
+            padding: 8px 10px;
+            transition: 0.5s;
+            font-size: 35px;
+            font-family: 'Bebas Neue';
+            border-radius: 1px;
+            text-decoration: none;
+            border: 2px solid black; /* Add a border */
+            margin: 0 10px; /* Add some margin to create a gap between the buttons */
+            display: flex; /* Add this */
+            align-items: center; /* Add this */
+            justify-content: center; /* Add this */
+        }
+        
+        .button-style-workout2:hover {
+            background-color: #01baef;
+        }
+
+
+
         body {
             display: flex;
             justify-content: flex-start; /* Align content to the top */
@@ -88,8 +158,8 @@
                 <button type="button" class="add-exercise">Add Exercise</button>
             </div>
         </div>
-        <button type="button" id="add-day">Add Day</button>
-        <button type="submit">Create Workout</button>
+        <button class="button-style-workout" type="button" id="add-day">Add Day</button>
+        <br><button class="button-style-workout2" type="submit">Create Workout</button>
     </form>
 
     <script>

@@ -21,10 +21,79 @@
     background-color: #01baef;
   }
 
+
+  .add-exercise {
+    flex-grow: 1;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 8px 10px;
+    transition: 0.5s;
+    font-size: 35px;
+    font-family: 'Bebas Neue';
+    border-radius: 1px;
+    text-decoration: none;
+    color: black;
+    border: 2px solid black; /* Add a border */
+    margin: 0 10px; /* Add some margin to create a gap between the buttons */
+    display: flex; /* Add this */
+    align-items: center; /* Add this */
+    justify-content: center; /* Add this */
+  }
+  
+  .button-style-phone-workout:hover {
+    background-color: #01baef;
+  }
+
+
+
+  .button-style-phone-workout {
+    flex-grow: 1;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 8px 10px;
+    transition: 0.5s;
+    font-size: 35px;
+    font-family: 'Bebas Neue';
+    border-radius: 1px;
+    text-decoration: none;
+    color: black;
+    border: 2px solid black; /* Add a border */
+    margin: 0 10px; /* Add some margin to create a gap between the buttons */
+    display: flex; /* Add this */
+    align-items: center; /* Add this */
+    justify-content: center; /* Add this */
+  }
+  
+  .button-style-phone-workout:hover {
+    background-color: #01baef;
+  }
+
+  .button-style-phone-workout2 {
+    flex-grow: 1;
+    background-color: #01baef;
+    color: white;
+    cursor: pointer;
+    padding: 8px 10px;
+    transition: 0.5s;
+    font-size: 35px;
+    font-family: 'Bebas Neue';
+    border-radius: 1px;
+    text-decoration: none;
+    border: 2px solid black; /* Add a border */
+    margin: 0 10px; /* Add some margin to create a gap between the buttons */
+    display: flex; /* Add this */
+    align-items: center; /* Add this */
+    justify-content: center; /* Add this */
+  }
+  
+  .button-style-phone-workout2:hover {
+    background-color: #01baef;
+  }
+  
   /* maxcalc scroll */
   .scrollable-content {
     overflow-y: auto; /* Always show vertical scrollbar */
-    max-height: 55vh;
+    max-height: 53vh;
     /* Adjust height to account for the tab section */
   }
   

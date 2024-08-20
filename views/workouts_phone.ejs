@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workouts</title>
     <link rel="stylesheet" type="text/css" href="/style/stylesheet2.css">
+    <link rel="stylesheet" type="text/css" href="/style/phonestyles.css">
     <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
     <style>
         body {
@@ -52,10 +53,61 @@
         button {
             margin-top: 10px;
         }
+
+        /* Media queries for mobile */
+        @media (max-width: 768px) {
+            body {
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            #create-workout-form {
+                padding-bottom: 80px; /* Adjust padding for mobile */
+            }
+            .exercise {
+                flex-direction: column; /* Stack inputs vertically on mobile */
+                align-items: flex-start;
+            }
+            .exercise label, .exercise input {
+                width: 100%; /* Full width inputs on mobile */
+                margin: 5px 0;
+            }
+        }
+
+        
+
+        /* Media queries for mobile */
+        @media (max-width: 768px) {
+            .tabs {
+                font-size: 25px; /* Smaller font size for mobile */
+                height: 14vh; /* Adjust height for mobile */
+            }
+
+            .tabs a {
+                padding: 0px 0; /* Adjust padding for mobile */
+                border-right: 1px solid #000;
+                border-left: 1px #000;
+            }
+            .tabs a:first-child {
+            border-left: none;
+            }
+
+            .tabs a:last-child {
+                border-right: none;
+            }
+
+            .tabs a:hover {
+                background-color: gray;
+            }
+
+            .tabs a.active {
+                border-color: #000;
+                background-color: #01baef;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Create Workout</h1>
+    <h1 style="text-align: center; width:100%;">Create Workout</h1>
     <form id="create-workout-form" action="/create-workout" method="POST">
         <div>
             <label for="workout-name">Workout Name:</label>
@@ -85,8 +137,9 @@
                 <button type="button" class="add-exercise">Add Exercise</button>
             </div>
         </div>
-        <button type="button" id="add-day">Add Day</button>
-        <button type="submit">Create Workout</button>
+        <button class="button-style-phone-workout"type="button" id="add-day">Add Day</button>
+        <br><br>
+        <button class="button-style-phone-workout2"type="submit">Create Workout</button>
     </form>
 
     <script>
