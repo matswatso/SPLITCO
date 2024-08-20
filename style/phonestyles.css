@@ -22,9 +22,9 @@
 
   /* maxcalc scroll */
   .scrollable-content {
-    overflow-y: scroll; /* Always show vertical scrollbar */
-    max-height: calc(100vh - 15vh);
-    height: calc(100vh - 34vh); /* Adjust height to account for the tab section */
+    overflow-y: auto; /* Always show vertical scrollbar */
+    max-height: 62vh;
+    /* Adjust height to account for the tab section */
   }
   
   /* Custom scrollbar styles for .scrollable-content */

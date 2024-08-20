@@ -146,7 +146,7 @@ body {
 
 .logout-button {
   position: absolute;
-  top: 80px;
+  top: 150px;
   right: 50px;
   border-radius: 25px;
   background-color: white;
@@ -155,7 +155,7 @@ body {
 
 .logout-button button {
   font-family: 'Bebas Neue', sans-serif ;
-  font-size: 55px;
+  font-size: 75px;
   background-color: white;
   border-radius: 25px ;
 }
@@ -544,7 +544,7 @@ body {
   color: white;
   border-radius: 12px; /* Rounded corners */
   width: 90%; /* Take up 30% of the container width */
-  height: 850px; /* Set the height to 80% of the viewport height */
+  height: 300px; /* Set the height to 80% of the viewport height */
 }
 .exerciseButton2 {
   padding: 10px 24px 50px 24px;
