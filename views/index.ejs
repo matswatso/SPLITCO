@@ -19,9 +19,7 @@
 
 <html>
 <head>
-  <!-- import css styesheet -->
   <link rel="stylesheet" href="/style/stylesheet.css">
-  <!-- import local icons -->
   <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -29,14 +27,15 @@
   <div class="container">
     <h1 style ='font-size: 95px; color: white; margin-bottom: 20px; text-align: center;' >splitco</h1>
   </div>
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;"> <!-- Adjust this -->
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;"> 
     
     <h1>Hi <%= name %></h1>
     <form action="/logout?_method=DELETE" method="POST" class="logout-button">
       <button type="submit">Log Out</button>
     </form>
-    <p>Hello there <%= name %> we hope you are doing well</p>
-    <p>Try out the Max Calculator </p>
+    <p>Welcome to Splitco where we strive to help you create the ultimate workout</p>
+    <p>The services that we offer inlcude, a rep range calculator for three main excercises, Squat, Bench, and Deadlift</p>
+    <p>As well as, a Day by Day Workout Split Creator and a forum to share them!</p>
 
     <!-- Rest of your page content goes here -->
   </div>
