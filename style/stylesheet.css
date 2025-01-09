@@ -251,6 +251,16 @@ h1 {
   font-size: 50px;
 }
 
+h2 {
+  font-family: 'Bebas Neue';
+  font-size: 35px;
+}
+
+label {
+  font-family:Candara;
+  font-size: 18px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

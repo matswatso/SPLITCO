@@ -4,22 +4,19 @@
     <button type="submit">Log Out</button>
   </form>
 <head>
-  <!-- import css styesheet -->
   <link rel="stylesheet" type="text/css" href="/style/stylesheet.css">
   <link rel="stylesheet" type="text/css" href="/style/modals.css">
-  <!-- import local icons -->
   <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <%- include('partials/tabs', {active: 'public-workouts'}) %>
 
-<!-- Display all workouts -->
  <h1 style='text-align: center;'>PUBLIC WORKOUTS</h1>
 <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 62.5vh; margin-top: 70px; overflow-y: scroll; overflow-x: hidden;">
   <% workouts.forEach(function(workout) { %>
     <button class="workoutpublic-button" onclick="openModal('<%= workout.id %>')">
       <h2><%= workout.name %> <span class="workout-user">by <%= workout.users.name %></span></h2>
-      <p><%= workout.description %></p> <!-- Display the workout description -->
+      <p><%= workout.description %></p> 
     </button>
   <% }); %>
 </div>

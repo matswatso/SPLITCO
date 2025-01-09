@@ -1,211 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workouts</title>
-    <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
-    <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        .add-exercise {
-            flex-grow: 1;
-            background-color: inherit;
-            cursor: pointer;
-            padding: 8px 10px;
-            transition: 0.5s;
-            font-size: 35px;
-            font-family: 'Bebas Neue';
-            border-radius: 1px;
-            text-decoration: none;
-            color: black;
-            border: 2px solid black; /* Add a border */
-            margin: 0 10px; /* Add some margin to create a gap between the buttons */
-            display: flex; /* Add this */
-            align-items: center; /* Add this */
-            justify-content: center; /* Add this */
-        }
-        
-        .button-style-phone-workout:hover {
-            background-color: #01baef;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workouts</title>
+  <link rel="stylesheet" type="text/css" href="style/stylesheet.css">
+  <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    .add-exercise {
+      background-color: #b5c7ca;
+      cursor: pointer;
+      padding: 8px 10px;
+      transition: 0.5s;
+      font-size: 35px;
+      font-family: 'Bebas Neue';
+      border-radius: 1px;
+      color: black;
+      border: 2px solid black;
+      margin: 0 10px;
+      display: flex;
+      width: 110px;
+      align-items: center;
+      justify-content: center;
+    }
 
+    .button-style-phone-workout:hover {
+      background-color: #01baef;
+    }
 
+    .button-style-workout {
+      background-color: #b5c7ca;
+      cursor: pointer;
+      padding: 8px 10px;
+      transition: 0.5s;
+      font-size: 35px;
+      font-family: 'Bebas Neue';
+      border-radius: 1px;
+      color: black;
+      border: 2px solid black;
+      margin: 0 10px;
+      display: flex;
+      width: 80px;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .button-style-workout:hover {
+      background-color: #01baef;
+    }
 
-        .button-style-workout {
-            flex-grow: 1;
-            background-color: inherit;
-            cursor: pointer;
-            padding: 8px 10px;
-            transition: 0.5s;
-            font-size: 35px;
-            font-family: 'Bebas Neue';
-            border-radius: 1px;
-            text-decoration: none;
-            color: black;
-            border: 2px solid black; /* Add a border */
-            margin: 0 10px; /* Add some margin to create a gap between the buttons */
-            display: flex; /* Add this */
-            align-items: center; /* Add this */
-            justify-content: center; /* Add this */
-        }
-        
-        .button-style-workout:hover {
-            background-color: #01baef;
-        }
+    .button-style-workout2 {
+      flex-grow: 1;
+      background-color: #01baef;
+      color: white;
+      cursor: pointer;
+      padding: 8px 10px;
+      transition: 0.5s;
+      font-size: 35px;
+      font-family: 'Bebas Neue';
+      border-radius: 1px;
+      text-decoration: none;
+      border: 2px solid black; 
+      margin: 0 10px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+    }
+    
+    .button-style-workout2:hover {
+      background-color: #01baef;
+    }
 
-        .button-style-workout2 {
-            flex-grow: 1;
-            background-color: #01baef;
-            color: white;
-            cursor: pointer;
-            padding: 8px 10px;
-            transition: 0.5s;
-            font-size: 35px;
-            font-family: 'Bebas Neue';
-            border-radius: 1px;
-            text-decoration: none;
-            border: 2px solid black; /* Add a border */
-            margin: 0 10px; /* Add some margin to create a gap between the buttons */
-            display: flex; /* Add this */
-            align-items: center; /* Add this */
-            justify-content: center; /* Add this */
-        }
-        
-        .button-style-workout2:hover {
-            background-color: #01baef;
-        }
+    body {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden; 
+    }
+    #create-workout-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      overflow-y: auto;
+      padding-bottom: 60px; 
+    }
+    .day, .exercise {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .exercise {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%; 
+    }
+    .exercise label, .exercise input {
+      margin: 5px;
+    }
+    .logout-button2 {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      border-radius: 25px;
+    }
+    #create-workout-form {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    button {
+      margin-top: 10px;
+    }
 
+    .inline-row {
+      display: flex;            
+      align-items: center;      
+      justify-content: center; 
+      gap: 10px;                
+      margin-bottom: 10px;      
+    }
 
+    .inline-row label {
+      white-space: nowrap; 
+    }
 
-        body {
-            display: flex;
-            justify-content: flex-start; /* Align content to the top */
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-        #create-workout-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 100%; /* Remove width limitation */
-            overflow-y: auto;
-            padding-bottom: 60px; /* Account for the height of the tabs */
-        }
-        .day, .exercise {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-        .exercise {
-            flex-direction: row;
-            justify-content: space-between;
-            width: 100%; /* Allow full width */
-        }
-        .exercise label, .exercise input {
-            margin: 5px;
-        }
-        .logout-button2 {
-            position: absolute; /* Revert to original CSS */
-            top: 30px;
-            right: 50px;
-            border-radius: 25px;
-        }
-        #create-workout-form {
-            max-height: 60vh; /* Show scroll bar sooner */
-            overflow-y: auto;
-        }
-        button {
-            margin-top: 10px;
-        }
-    </style>
+    .inline-row input,
+    .inline-row textarea {
+      flex-grow: 1;
+      max-width: 300px;
+    }
+    .container {
+      background-color: #01baef;
+    }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .inline-row h2 {
+      margin: 0;
+    }
+    .inline-row button {
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+    .exercises-container {
+        border: 3px solid #b5c7ca;
+        border-radius: 19px;
+        margin: 10px;
+        padding: 5px;
+    }
+  </style>
 </head>
 <body>
   <form action="/logout?_method=DELETE" method="POST" class="logout-button2">
     <button type="submit">Log Out</button>
   </form>
-    <h1>Create Workout</h1>
-    <form id="create-workout-form" action="/create-workout" method="POST">
-        <div>
-            <label for="workout-name">Workout Name:</label>
-            <input type="text" id="workout-name" name="workoutName" required>
-        </div>
-        <div>
-            <label for="workout-description">Description:</label>
-            <textarea id="workout-description" name="workoutDescription" required></textarea>
-        </div>
-        <div id="days-container">
-            <h2>Days</h2>
-            <div class="day">
-                <label for="day-name">Day Name:</label>
-                <input type="text" name="dayName" required>
-                <input type="hidden" name="exerciseCount" value="1">
-                <div class="exercises-container">
-                    <h3>Exercises</h3>
-                    <div class="exercise">
-                        <label for="exercise-name">Exercise Name:</label>
-                        <input type="text" name="exerciseName" required>
-                        <label for="sets">Sets:</label>
-                        <input type="number" name="sets" required>
-                        <label for="reps">Reps:</label>
-                        <input type="number" name="reps" required>
-                    </div>
-                </div>
-                <button type="button" class="add-exercise">Add Exercise</button>
-            </div>
-        </div>
+
+  <h1 style="font-size:65px;">Create Workout</h1>
+  
+  <form id="create-workout-form" action="/create-workout" method="POST">
+    <!-- Top row: Workout Name + Description side by side -->
+    <div class="inline-row" style="justify-content: space-between;">
+      <div class="inline-row">
+        <h1 style="font-size:25px;">Workout Name:</h1>
+        <input type="text" id="workout-name" name="workoutName" required>
+      </div>
+      <div class="inline-row">
+        <label for="workout-description">Description:</label>
+        <textarea id="workout-description" name="workoutDescription" required></textarea>
+      </div>
+    </div>
+    
+   
+    <div id="days-container">
+      <div class="inline-row">
+        <h2 style="text-align: center;">Days</h2>
         <button class="button-style-workout" type="button" id="add-day">Add Day</button>
-        <br><button class="button-style-workout2" type="submit">Create Workout</button>
-    </form>
+      </div>
+        <br>
+      <div class="exercises-container">
+      <div class="day">
+        <div class="inline-row">
+          <label for="day-name">Day Name:</label>
+          <input type="text" name="dayName" required>
+          <input type="hidden" name="exerciseCount" value="1">
+        </div>
 
-    <script>
-        document.getElementById('add-day').addEventListener('click', function() {
-            const dayContainer = document.createElement('div');
-            dayContainer.classList.add('day');
-            dayContainer.innerHTML = `
-                <label for="day-name">Day Name:</label>
-                <input type="text" name="dayName" required>
-                <input type="hidden" name="exerciseCount" value="1">
-                <div class="exercises-container">
-                    <h3>Exercises</h3>
-                    <div class="exercise">
-                        <label for="exercise-name">Exercise Name:</label>
-                        <input type="text" name="exerciseName" required>
-                        <label for="sets">Sets:</label>
-                        <input type="number" name="sets" required>
-                        <label for="reps">Reps:</label>
-                        <input type="number" name="reps" required>
-                    </div>
-                </div>
-                <button type="button" class="add-exercise">Add Exercise</button>
-            `;
-            document.getElementById('days-container').appendChild(dayContainer);
-        });
+          <div class="inline-row">
+            <h2 style="text-align: center;">Exercises</h2>
+            <button type="button" class="add-exercise">Add Exercise</button>
+          </div>
+          
+          <div class="exercise">
+            <label for="exercise-name">Exercise Name:</label>
+            <input type="text" name="exerciseName" required>
+            <label for="sets">Sets:</label>
+            <input type="number" name="sets" required>
+            <label for="reps">Reps:</label>
+            <input type="number" name="reps" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <br>
+    <button class="button-style-workout2" type="submit">Create Workout</button>
+  </form>
 
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('add-exercise')) {
-                const exerciseContainer = document.createElement('div');
-                exerciseContainer.classList.add('exercise');
-                exerciseContainer.innerHTML = `
-                    <label for="exercise-name">Exercise Name:</label>
-                    <input type="text" name="exerciseName" required>
-                    <label for="sets">Sets:</label>
-                    <input type="number" name="sets" required>
-                    <label for="reps">Reps:</label>
-                    <input type="number" name="reps" required>
-                `;
-                event.target.previousElementSibling.appendChild(exerciseContainer);
+  <script>
+    
+    document.getElementById('add-day').addEventListener('click', function() {
+      const dayContainer = document.createElement('div');
+      dayContainer.classList.add('day');
 
-                // Update exercise count
-                const exerciseCountInput = event.target.closest('.day').querySelector('input[name="exerciseCount"]');
-                exerciseCountInput.value = parseInt(exerciseCountInput.value) + 1;
-            }
-        });
-    </script>
-    <%- include('partials/tabs', {active: 'home'}) %>
+      
+      dayContainer.innerHTML = `<br>
+      
+        <div class="exercises-container">
+        <div class="inline-row">
+          <label for="day-name">Day Name:</label>
+          <input type="text" name="dayName" required>
+          <input type="hidden" name="exerciseCount" value="1">
+        </div>
+
+          <div class="inline-row">
+            <h2 style="text-align: center;">Exercises</h2>
+            <button type="button" class="add-exercise">Add Exercise</button>
+          </div>
+          <div class="exercise">
+            <label for="exercise-name">Exercise Name:</label>
+            <input type="text" name="exerciseName" required>
+            <label for="sets">Sets:</label>
+            <input type="number" name="sets" required>
+            <label for="reps">Reps:</label>
+            <input type="number" name="reps" required>
+          </div>
+        </div>
+      `;
+      document.getElementById('days-container').appendChild(dayContainer);
+    });
+
+    
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('add-exercise')) {
+       
+        const exerciseContainer = document.createElement('div');
+        exerciseContainer.classList.add('exercise');
+        exerciseContainer.innerHTML = `
+          <label for="exercise-name">Exercise Name:</label>
+          <input type="text" name="exerciseName" required>
+          <label for="sets">Sets:</label>
+          <input type="number" name="sets" required>
+          <label for="reps">Reps:</label>
+          <input type="number" name="reps" required>
+        `;
+
+        
+        const exercisesContainer = event.target.closest('.exercises-container');
+        exercisesContainer.appendChild(exerciseContainer);
+
+        
+        const exerciseCountInput = event.target
+          .closest('.day')
+          .querySelector('input[name="exerciseCount"]');
+        exerciseCountInput.value = parseInt(exerciseCountInput.value) + 1;
+      }
+    });
+  </script>
+
+  <%- include('partials/tabs', {active: 'home'}) %>
 </body>
 </html>
