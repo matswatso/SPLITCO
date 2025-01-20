@@ -67,6 +67,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname));
+app.use('/style', express.static(path.join(__dirname, 'style')));
+app.use('/splitco', express.static(path.join(__dirname, 'splitco')));
+app.use('/pics', express.static(path.join(__dirname, 'pics')));
 
 function renderPage(req, res, page, data = {}) {
   const view = req.device.type === 'phone' ? `${page}_phone` : page;

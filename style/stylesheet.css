@@ -551,9 +551,9 @@ body {
   font-size: 0px;
   font-family: 'Bebas Neue';
   color: white;
-  border-radius: 12px; /* Rounded corners */
-  width: 27%; /* Take up 30% of the container width */
-  height: 55vh; /* Set the height to 80% of the viewport height */
+  border-radius: 12px; 
+  width: 27%; 
+  height: 55vh; 
 }
 .exerciseButton2 {
   padding: 10px 24px 50px 24px;
