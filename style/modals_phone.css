@@ -22,10 +22,10 @@
     cursor: pointer;
     width: 100%;
     text-align: left;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden; 
     overflow-y: hidden;
-    white-space: nowrap; /* Prevent text wrapping */
-    min-height: 300px; /* Set a minimum height */
+    white-space: nowrap; 
+    min-height: 300px; 
   }
   
   
@@ -36,9 +36,9 @@
     border: 1px solid #888;
     font-size: 40px;
     width: 70%;
-    max-height: 50vh; /* Set a maximum height for the modal content */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    max-height: 50vh; 
+    overflow-y: auto;
+    overflow-x: hidden; 
     border-radius: 10px;
     padding-bottom:100px;
   }

@@ -10,11 +10,11 @@
     border-radius: 1px;
     text-decoration: none;
     color: black;
-    border: 2px solid black; /* Add a border */
-    margin: 0 10px; /* Add some margin to create a gap between the buttons */
-    display: flex; /* Add this */
-    align-items: center; /* Add this */
-    justify-content: center; /* Add this */
+    border: 2px solid black;
+    margin: 0 10px; 
+    display: flex; 
+    align-items: center;  
+    justify-content: center;   
   }
   
   .button-style-phone:hover {
@@ -33,11 +33,11 @@
     border-radius: 1px;
     text-decoration: none;
     color: black;
-    border: 2px solid black; /* Add a border */
-    margin: 0 10px; /* Add some margin to create a gap between the buttons */
-    display: flex; /* Add this */
-    align-items: center; /* Add this */
-    justify-content: center; /* Add this */
+    border: 2px solid black;    
+    margin: 0 10px;    
+    display: flex;   
+    align-items: center;   
+    justify-content: center;   
   }
   
   .button-style-phone-workout:hover {
@@ -57,11 +57,11 @@
     border-radius: 1px;
     text-decoration: none;
     color: black;
-    border: 2px solid black; /* Add a border */
-    margin: 0 10px; /* Add some margin to create a gap between the buttons */
-    display: flex; /* Add this */
-    align-items: center; /* Add this */
-    justify-content: center; /* Add this */
+    border: 2px solid black;    
+    margin: 0 10px;    
+    display: flex;   
+    align-items: center;   
+    justify-content: center;   
   }
   
   .button-style-phone-workout:hover {
@@ -79,11 +79,11 @@
     font-family: 'Bebas Neue';
     border-radius: 1px;
     text-decoration: none;
-    border: 2px solid black; /* Add a border */
-    margin: 0 10px; /* Add some margin to create a gap between the buttons */
-    display: flex; /* Add this */
-    align-items: center; /* Add this */
-    justify-content: center; /* Add this */
+    border: 2px solid black;    
+    margin: 0 10px;    
+    display: flex;   
+    align-items: center;   
+    justify-content: center;   
   }
   
   .button-style-phone-workout2:hover {

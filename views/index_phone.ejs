@@ -3,12 +3,12 @@
   body {
     background-color: white; 
     display: flex;
-    flex-direction: column; /* Add this */
+    flex-direction: column; 
     align-items: center;
-    justify-content: flex-start; /* Change this */
+    justify-content: flex-start; 
     margin: 100;
     font-size: 90px;
-    padding: 0; /* Add this */
+    padding: 0; 
   }
 
   .container {
@@ -19,9 +19,9 @@
 
 <html>
 <head>
-  <!-- import css styesheet -->
+ 
   <link rel="stylesheet" href="/style/stylesheet2.css">
-  <!-- import local icons -->
+
   <link href='style/resources/boxicons/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -40,7 +40,6 @@
     <p>The services that we offer inlcude, a rep range calculator for three main excercises, Squat, Bench, and Deadlift</p>
     <p>As well as, a Day by Day Workout Split Creator and a forum to share them!</p>
 
-    <!-- Rest of your page content goes here -->
   </div>
 <%- include('partials/tabs_phone', {active: 'workouts'}) %>
 
