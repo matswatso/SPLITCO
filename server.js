@@ -11,7 +11,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const path = require('path');
-const device = require('express-device'); // Add this line
+const device = require('express-device'); 
 
 const { createClient } = require('@supabase/supabase-js');
 const supabaseUrl = 'https://ricwdzklyjqqjprpjner.supabase.co';
@@ -73,7 +73,7 @@ app.use('/pics', express.static(path.join(__dirname, 'pics')));
 
 function renderPage(req, res, page, data = {}) {
   const view = req.device.type === 'phone' ? `${page}_phone` : page;
-  const userName = req.user ? req.user.name : 'Guest'; // Check if req.user is defined
+  const userName = req.user ? req.user.name : 'Guest';
   res.render(view, { name: userName, active: page, ...data });
 }
 
@@ -326,3 +326,4 @@ app.get('/workout-details/:id', checkAuthenticated, async (req, res) => {
 
   res.json({ ...workout, days: daysWithExercises });
 });
+
